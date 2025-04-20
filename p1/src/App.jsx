@@ -6,6 +6,11 @@ import viaCep from './utils/viaCep';
 
 
 class App extends React.Component {
+
+  state = {
+    enderecoCep: []
+  }
+
     onBuscarCep = (cep) => {
     if(cep.trim()===""){
       alert("O campo não pode estar vazio!")
@@ -19,7 +24,9 @@ class App extends React.Component {
             alert("O cep não foi encontrado!")
         }
         else{
-            console.log(dados); 
+          this.setState((prevState) => ({ // pega o estado mais atualizado até o momento
+            enderecoCep: [dados, ...prevState.enderecoCep] // vai acumulando cada pesquisa
+          }));
         }
     })
     .catch((erro) => {
@@ -37,7 +44,9 @@ class App extends React.Component {
       dica='Coloque o cep'
       onBuscarCep = {this.onBuscarCep}
     />
-    <LocalidadeLista/> 
+    <LocalidadeLista
+      enderecoCep={this.state.enderecoCep}
+    /> 
     </div>
     )
   }
