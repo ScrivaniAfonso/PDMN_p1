@@ -12,7 +12,11 @@
   "dependencies": {
     "axios": "^1.8.4",
     "bootstrap": "^5.3.5",
+    "chart.js": "^4.4.9",
+    "chartjs-plugin-datalabels": "^2.2.0",
     "p1": "file:",
+    "primeflex": "^4.0.0",
+    "primeicons": "^7.0.0",
     "primereact": "^10.9.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

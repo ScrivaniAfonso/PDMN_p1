@@ -1,10 +1,10 @@
     import React, { Component } from 'react'
-    import axios from 'axios'
+  
     import { Button } from 'primereact/button'
     import { IconField } from 'primereact/iconfield'
     import { InputIcon } from 'primereact/inputicon'
     import { InputText } from 'primereact/inputtext'
-    import viaCep from '../utils/viaCep'
+
 
 
     export default class Busca extends Component {
@@ -34,11 +34,15 @@
                                 className='w-full'
                                 placeholder={this.props.dica}
                                 onChange={this.onTermoAlterado}
-                                value={this.state.termoDeBusca}/>
+                                value={this.state.termoDeBusca}
+                                style={{ maxWidth: '300px' }}
+                                />
                         </IconField>
                         <Button 
                             label="OK"
-                            outlined/>
+                            outlined
+                            style={{ maxWidth: '300px', marginTop: '10px' }}/>
+                            
                 </div>
             </form>
         )

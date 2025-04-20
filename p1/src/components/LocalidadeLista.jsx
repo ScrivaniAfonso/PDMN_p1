@@ -5,7 +5,7 @@ export default class LocalidadeLista extends Component {
    
     render() {
         
-    const { enderecoCep } = this.props; // Desestruturando o objeto
+    const { enderecoCep } = this.props; // desestruturando o objeto
 
     if (!enderecoCep  || enderecoCep.length === 0) {
         return null;
