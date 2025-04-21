@@ -1,8 +1,8 @@
 import React from 'react';
-import Busca from "./components/Busca";
-import LocalidadeLista from './components/LocalidadeLista';
-import viaCep from './utils/viaCep';
-import GraficoUF from './components/GraficoUF';
+import Busca from "./components/Busca"
+import LocalidadeLista from './components/LocalidadeLista'
+import viaCep from './utils/viaCep'
+import GraficoUF from './components/GraficoUF'
 
 class App extends React.Component {
 
@@ -13,34 +13,34 @@ class App extends React.Component {
 
   onBuscarCep = (cep) => {
     if (cep.trim() === "") {
-      alert("O campo não pode estar vazio!");
-      return;
+      alert("O campo não pode estar vazio!")
+      return
     } else {
       viaCep.get(`${cep}/json`)
         .then((response) => {
           const dados = response.data;
           if (dados.erro) {
-            alert("O cep não foi encontrado!");
+            alert("O cep não foi encontrado!")
           } else {
-            const uf = dados.uf;
+            const uf = dados.uf
             this.setState((prevState) => {
              
-              const quantidadeEstados = { ...prevState.quantidadeEstados };
-              quantidadeEstados[uf] = (quantidadeEstados[uf] || 0) + 1;
+              const quantidadeEstados = { ...prevState.quantidadeEstados }
+              quantidadeEstados[uf] = (quantidadeEstados[uf] || 0) + 1
 
               return {
                 enderecoCep: [dados, ...prevState.enderecoCep],
                 quantidadeEstados: quantidadeEstados, 
-              };
-            });
+              }
+            })
           }
         })
         .catch((erro) => {
-          alert("O cep tem que ter 8 números e não pode conter letras.");
-          console.error('Erro ao buscar CEP:', erro);
+          alert("O cep tem que ter 8 números e não pode conter letras.")
+          console.error('Erro ao buscar CEP:', erro)
         });
     }
-  };
+  }
 
   render() {
     return (
