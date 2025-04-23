@@ -49,10 +49,10 @@ class GraficoUF extends React.Component {
           tooltip: {
             callbacks: {
               label: function(grafico) {
-                const total = grafico.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
-                const aparicoes = grafico.parsed;
-                const percentual = ((aparicoes / total) * 100).toFixed(1);
-                return `${grafico.label}: ${aparicoes} (${percentual}%)`;
+                const total = grafico.chart.data.datasets[0].data.reduce((a, b) => a + b, 0)
+                const aparicoes = grafico.parsed
+                const percentual = ((aparicoes / total) * 100).toFixed(1)
+                return `${grafico.label}: ${aparicoes} (${percentual}%)`
               }
             }
           }

@@ -44,29 +44,30 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="container mt-4">
-        <div className="mb-4">
-          <Busca
-            dica="Coloque o cep"
-            onBuscarCep={this.onBuscarCep}
-          />
-        </div>
-
-        <div className="d-flex flex-row justify-content-between align-items-start gap-4">
-          <div style={{ width: '50%' }}>
-            <LocalidadeLista enderecoCep={this.state.enderecoCep} />
-          </div>
-
-          <div className="d-flex justify-content-end" style={{ width: '50%' }}>
-            <div>
-              <h5 text align = "center">Gráfico por UF</h5>
-              <GraficoUF quantidadeEstados={this.state.quantidadeEstados} />
+        <div className="p-4" style={{ position: 'relative' }}> 
+            <div className="mb-4">
+                <Busca
+                    dica="Coloque o cep"
+                    onBuscarCep={this.onBuscarCep}
+                />
             </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
 
+            <div style={{ marginRight: '420px' }}> 
+                <LocalidadeLista enderecoCep={this.state.enderecoCep} />
+            </div>
+
+            {/* Gráfico fixo à direita */}
+            <div style={{
+                position: 'absolute',
+                right: '20px',
+                top: '50px', /* Ajuste conforme a altura do campo de busca */
+                width: '400px',  
+            }}>
+               <h5 style={{ textAlign: 'center',}}>Gráfico por UF</h5>
+                <GraficoUF quantidadeEstados={this.state.quantidadeEstados} />
+            </div>
+        </div>
+    );
+}
+}
 export default App;
