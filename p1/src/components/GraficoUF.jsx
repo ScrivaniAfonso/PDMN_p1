@@ -1,10 +1,6 @@
 import React from 'react'
 import { Chart } from 'primereact/chart'
-import { Chart as ChartJS,Tooltip, Legend,} from 'chart.js'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
-
-
-ChartJS.register( Tooltip, Legend, ChartDataLabels)
 
 class GraficoUF extends React.Component {
 
@@ -31,14 +27,10 @@ class GraficoUF extends React.Component {
           datalabels: {
             formatter: (aparicoes, grafico) => {
               const total = grafico.chart.data.datasets[0].data.reduce((a, b) => a + b, 0)
-              const percentual = ((aparicoes / total) * 100).toFixed(0)
-              return `${percentual}%`
+              return `${((aparicoes / total) * 100).toFixed(0)}%`;
             },
             color: '#fff',
-            font: {
-              weight: 'bold',
-              size: 14,
-            }
+            font: { weight: 'bold', size: 14,}
           },
           legend: {
             position: 'right',
@@ -50,9 +42,8 @@ class GraficoUF extends React.Component {
             callbacks: {
               label: function(grafico) {
                 const total = grafico.chart.data.datasets[0].data.reduce((a, b) => a + b, 0)
-                const aparicoes = grafico.parsed
-                const percentual = ((aparicoes / total) * 100).toFixed(1)
-                return `${grafico.label}: ${aparicoes} (${percentual}%)`
+                const percentual = ((grafico.parsed / total) * 100).toFixed(1)
+                return `${grafico.label}: ${grafico.parsed} (${percentual}%)`;
               }
             }
           }
@@ -66,8 +57,7 @@ class GraficoUF extends React.Component {
     const chartData = this.gerarGrafico();
 
     return (
-      <Chart
-        type="pie" data={chartData} options={chartData.options} plugins={chartData.plugins}style={{ width: '400px', height: '400px' }}/>
+      <Chart type="pie" data={chartData} options={chartData.options} plugins={chartData.plugins}style={{ width: '400px', height: '400px' }}/>
     );
   }
 }
